@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
+
+:root {
+  --color-bg: #2c3639;
+  --color-container: #3f4e4f;
+  --color-card-bg: #a27b5c;
+  --color-text: #dcd7c9;
+  --color-error: #852525;
+  --radius: 1rem;
+  --padding: 2rem;
+  /* --fixed: calc(var(--radius) - var(--padding)); */
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Quicksand";
+  font-size: 1.6rem;
+  background-color: var(--color-bg);
+}
+
+ul {
+  list-style: none;
+}
+
+input {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+}
+
+input:focus {
+  outline: none;
+}
+
+.loading {
+  grid-column: 2/3;
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid var(--color-text);
+  border-top: 6px solid var(--color-card-bg);
+  border-radius: 100%;
+  margin: auto;
+  animation: spin 1s infinite linear;
+}
+
+.loading.display {
+  visibility: visible;
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+.airports {
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.airports__search-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50rem;
+  width: 100%;
+  text-align: center;
+}
+
+.airports__search-label {
+  font-size: 2.4rem;
+  font-weight: bolder;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.airport__search-input-wrapper {
+  position: relative;
+}
+
+.airport__search-button {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.airport__search-input {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  border: none;
+  background-color: var(--color-text);
+  font-size: 2rem;
+  color: var(--color-bg);
+}
+
+.airport__search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.airport__cards {
+  border-radius: var(--radius);
+  color: var(--color-text);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 120rem;
+  gap: 2rem;
+  margin-top: 4rem;
+  /* padding: var(--padding); */
+  /* overflow-y: scroll; */
+}
+
+.airport__cards.woutoverflow {
+  overflow: hidden;
+  height: unset;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  /* display: none; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-text);
+  border-radius: var(--radius);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-card-bg);
+  border-radius: var(--radius);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-container);
+}
+
+.airport__card {
+  padding: var(--padding);
+  border-radius: var(--radius);
+  /* border-radius: var(--fixed); */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background-color: var(--color-container);
+  box-shadow: 0px 4px 15px 0px rgba(40, 40, 40, 1);
+}
+
+.airport__card-location,
+.airport__card-icao {
+  margin-left: var(--padding);
+  overflow-wrap: anywhere;
+}
+.airport__card-name {
+  padding: var(--padding);
+  /* border-radius: var(--fixed); */
+  border-radius: 0.7rem;
+  background-color: var(--color-card-bg);
+  margin-bottom: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.airport__cards-no-result {
+  background-color: var(--color-error);
+  padding: var(--padding);
+  border-radius: var(--radius);
+  grid-column: 2/3;
+}
+
+@media screen and (max-width: 900px) {
+  .airport__cards {
+    grid-template-columns: auto;
+  }
+
+  .airport__cards-no-result,
+  .loading {
+    grid-column: unset;
+  }
+}

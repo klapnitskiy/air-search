@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="airports">
+      <div class="airports__search-wrapper">
+        <label class="airports__search-label" for="airport-search"
+          >Search airports...</label
+        >
+        <div class="airport__search-input-wrapper">
+          <input
+            class="airport__search-input"
+            type="search"
+            name="airport-search"
+            id="search"
+            placeholder="...by name"
+            data-search
+          />
+          <button class="airport__search-button" data-close-button>
+            <svg
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 20L4 4.00003M20 4L4.00002 20"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul class="airport__cards"></ul>
+    </section>
+  </body>
+</html>
