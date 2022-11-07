@@ -33,22 +33,12 @@ const hideLoadIndicator = function () {
   document.querySelector(".loading").remove();
 };
 
-const showScroll = () => {
-  airportCardsContainer.classList.remove("woutoverflow");
-};
-
-const hideScroll = () => {
-  airportCardsContainer.classList.add("woutoverflow");
-};
-
 const debounce = function (cb, delay = 1000) {
   let timeout;
 
   return (...args) => {
     clearTimeout(timeout);
     clearSearchResults();
-    hideScroll();
-    // hideNoResults();
     timeout = setTimeout(() => {
       if (args[0].length === 0) return;
       cb(...args);
@@ -109,12 +99,9 @@ const showSearchResults = async function (text) {
 
       if (data.length === 0) throw new Error("YoY! No results were found...");
 
-      showScroll();
       data.forEach((airport) => {
         renderAirportCard(airport);
       });
     })
     .catch((err) => renderError(err.message));
 };
-
-hideScroll();
